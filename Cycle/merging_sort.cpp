@@ -17,9 +17,6 @@ using namespace std;
 //     }
 // }
 int main(){
-    char a[10]="Englishtm";
-    for(int i=0;i<8;i++){
-        cout<<a[i]<<" ";
-    }
+
     return 0;
 }

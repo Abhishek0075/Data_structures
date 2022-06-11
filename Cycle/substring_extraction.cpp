@@ -13,7 +13,7 @@ void substring_extraction(char string[],int position,int sub_len){
     }
 }
 int main(){
-    char a[10]="Englishtm";
-    substring_extraction(a,0,4);
+    char a[]="English";
+    substring_extraction(a,1,5);//The positons are of :- 1 2 3 4 .... 
     return 0;
 }
