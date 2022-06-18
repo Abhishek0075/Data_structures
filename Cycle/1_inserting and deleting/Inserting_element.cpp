@@ -2,8 +2,8 @@
 using namespace std;
 void insert(int arr[],int element_no,int insert_position,int item){
     int new_no=element_no-1;
-    while(new_no==insert_position){
-        arr[new_no]=arr[new_no+1];
+    while(new_no>=insert_position){
+        arr[new_no+1]=arr[new_no];
         new_no=new_no-1;
     }
     arr[insert_position]=item;
