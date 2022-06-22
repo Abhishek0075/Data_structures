@@ -7,15 +7,15 @@ int binary_search(int arr[],int low_bound,int up_bound,int item){
     int i=0;
     cout<<"End = "<<end<<endl<<"Beg = "<<beg<<endl<<"mid = "<<mid<<endl;
     while(arr[mid]!=item and beg<=end){
-        cout<<"End = "<<end<<endl<<"Beg = "<<beg<<endl<<"mid = "<<mid<<endl<<"arr[mid] = "<<arr[mid]<<endl;
-        cout<<"=================\n"<<endl;
+        
         if(item>arr[mid]){
             beg=mid+1;
         }else{
             end=mid-1;
         }
         mid=(beg+end)/2;
-        i=i+1;
+        cout<<"End = "<<end<<endl<<"Beg = "<<beg<<endl<<"mid = "<<mid<<endl<<"arr[mid] = "<<arr[mid]<<endl;
+        cout<<"=================\n"<<endl;
     }
     if(arr[mid]==item){
         loc=mid+1;
@@ -25,18 +25,19 @@ int binary_search(int arr[],int low_bound,int up_bound,int item){
     return loc;
 }
 int main(){
-    int sear_key=99,binary;
+    int key;
     int array[12]={11,22,30,33,40,44,55,60,66,80,88,99};
     cout<<"Array : "<<endl;
     for(int i=0;i<12;i++){
         cout<<array[i]<<" ";
     }
     cout<<endl;
-    binary=binary_search(array,0,12,sear_key);
-    if(binary==-1){
-        cout<<"The element "<<sear_key<<" is not present in the array \n";
+    cout<<"Enter the number to be searched : ";
+    cin>>key;
+    if(binary_search(array,2,12,key)==-1){
+        cout<<"The element "<<key<<" is not present in the array \n";
     }else{
-        cout<<"The position of the searched element "<<sear_key<<" : "<<binary;
+        cout<<"The position of the searched element "<<key<<" : "<<binary_search(array,0,12,key);
     }
     return 0; 
 } 
