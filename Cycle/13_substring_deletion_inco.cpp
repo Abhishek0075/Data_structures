@@ -16,12 +16,21 @@ int pattern_matching(char text[],int text_no,char pattern[],int pat_no){
         if(l==pat_no){
             return INDEX+1;
         }
-        k=k+1;
+        k=k+1; 
     }
     return -1;
 }
+void sub_delete(char text[],int text_no,char pattern[],int pat_no){
+    int index=pattern_matching(char text[],int text_no,char pattern[],int pat_no);
+    int helper;
+    if (index==-1){
+        cout<<"There is no string like this in the main text "<<endl;
+    }else{
+        
+    }
+
+}
 int main(){
-    char t[7]="School",p[3]="ol";
-    cout<<pattern_matching(t,6,p,2);
+
     return 0;
 }
