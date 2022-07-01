@@ -1,10 +1,10 @@
 #include<iostream>
 using namespace std;
-int main(){
-    char a[4]="Das";
-    if(a[5]=="_"){
-        cout<<"Super";
+int  main(){
+    int a[5]={10,6,7,8,9};
+    int *b=a;
+    for(int i=0;i<5;i++){
+        cout<<(b[i]);
     }
-
     return 0;
 }
