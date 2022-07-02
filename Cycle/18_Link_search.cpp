@@ -38,11 +38,26 @@ public:
 
         }
         ptr->link=new_node;
+        new_node->link=NULL;
+    }
+    void search_list(int item){
+        int count=1;
+        while(start!=NULL){
+            if(start->info==item){
+                cout<<"ITEM FOUND at : "<<count<<endl;
+                return;
+            }
+            start=start->link;
+            count+=1;
+            cout<<"HAi at search list" <<endl;
+        }
     }
 };
 int main(){
     linked_list list;
+    
     list.insert_node(12);
     list.insert_node(13);
+    list.search_list(13);
     return 0;
 }
