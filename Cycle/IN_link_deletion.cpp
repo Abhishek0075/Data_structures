@@ -48,17 +48,31 @@ public:
         ptr->link=new_node;
         new_node->link=NULL;
     }
-    void search_list(int item){
-        int count=1;
-        while(start!=NULL){
-            if(start->info==item){
-                cout<<"ITEM FOUND at : "<<count<<endl;
+    void find(int item,node* loc,node* locp){
+        node* save;
+        node* ptr;
+        if(start==NULL){
+            loc=NULL,locp=NULL;
+            return;
+        }
+        if(start->info==item){
+            loc=start;
+            locp=NULL;
+            return;
+        }
+        save=start;
+        ptr=start->link;
+        while(ptr!=NULL){
+            if(ptr->info==item){
+                loc=ptr;
+                locp=save;
                 return;
             }
-            start=start->link;
-            count+=1;
-            // cout<<"HAi at search list" <<endl;
+            save=ptr;
+            ptr=ptr->link;
         }
+        loc=NULL;
+        return;
     }
 };
 int main(){
