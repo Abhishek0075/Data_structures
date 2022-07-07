@@ -36,14 +36,12 @@ public:
             start=new_node;
             return;
             // cout<<"Entered start"<<endl;
-
         }
         // cout<<"Hai";
         node* ptr=start;
         while (ptr->link!=NULL){
             ptr=ptr->link;
             // cout<<"Entered link "<<endl;
-
         }
         ptr->link=new_node;
         new_node->link=NULL;
