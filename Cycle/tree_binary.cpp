@@ -2,10 +2,11 @@
 using namespace std;
 class node{
 public:
+    int info;
     node* leftSide;
     node* rightSide;
     node* parent;
-    int info;
+    
     node(){
         leftSide=NULL;
         rightSide=NULL;
@@ -20,9 +21,11 @@ public:
     }
 };
 class tree{
-    node* start=NULL;
+    node* start;
 public:
-    tree(){}
+    tree(){
+        start=NULL;
+    }
     void insert_node(int num){
         int count;
         node* newNode=new node(num);
@@ -48,9 +51,23 @@ public:
         }else{
             ptr->rightSide=newNode;
         }
-        newNode->parent=ptr->parent;
+        newNode->parent=ptr;
         newNode->rightSide=NULL;
         newNode->leftSide=NULL;
+    }
+    void search(int num){
+        node* ptr=start;
+        while(ptr!=NULL){
+            cout<<ptr->info<<" ";
+            if(ptr->info < num){
+                ptr=ptr->rightSide;
+            }else if(ptr->info > num){
+                ptr=ptr->leftSide;
+            }else{
+                return;
+            }
+        }
+        cout<<"\nNumber "<<num<<" not found in the tree : "<<endl;
     }
 };
 int main(){
@@ -61,5 +78,6 @@ int main(){
     t.insert_node(30);
     t.insert_node(8);
     t.insert_node(50);
+    t.search(1);
     return 0;
 }
