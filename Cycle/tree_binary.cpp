@@ -5,18 +5,15 @@ public:
     int info;
     node* leftSide;
     node* rightSide;
-    node* parent;
     
     node(){
         leftSide=NULL;
         rightSide=NULL;
-        parent=NULL;
         info=0;
     }
     node(int num){
         leftSide=NULL;
         rightSide=NULL;
-        parent=NULL;
         info=num;
     }
 };
@@ -39,7 +36,6 @@ public:
         }
         node* ptr=start;
         while(ptr->leftSide!=NULL and ptr->rightSide!=NULL){
-            newNode->parent=ptr;
             if(newNode->info<ptr->info){
                 ptr=ptr->leftSide;
             }else{
@@ -51,9 +47,8 @@ public:
         }else{
             ptr->rightSide=newNode;
         }
-        newNode->parent=ptr;
-        newNode->rightSide=NULL;
-        newNode->leftSide=NULL;
+        // newNode->rightSide=NULL;
+        // newNode->leftSide=NULL;
     }
     void search(int num){
         node* ptr=start;
