@@ -47,8 +47,6 @@ public:
         }else{
             ptr->rightSide=newNode;
         }
-        // newNode->rightSide=NULL;
-        // newNode->leftSide=NULL;
     }
     void search(int num){
         node* ptr=start;
@@ -73,6 +71,6 @@ int main(){
     t.insert_node(30);
     t.insert_node(8);
     t.insert_node(50);
-    t.search(1);
+    t.search(30);
     return 0;
 }

@@ -48,7 +48,7 @@ public:
         ptr->link=new_node;
         new_node->link=NULL;
     }
-    void find(int item,node* loc,node* locp){
+    void find(int item,node*& loc,node*& locp){
         node* save;
         node* ptr;
         if(start==NULL){
@@ -85,8 +85,10 @@ int main(){
         cin>>a[i];
     }
     linked_list list(a,no_nodes);
+    node* list1=new node();
+    node* list2=new node();
     cout<<"Enter the number to be searched in the list : "<<endl;
     cin>>search_key;
-    list.search_list(search_key);
+    list.find(search_key,list1,list2);
     return 0;
 }
