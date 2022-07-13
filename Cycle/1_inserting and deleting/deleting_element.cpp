@@ -15,12 +15,22 @@ void display_array(int arr[],int no_element){
     cout<<endl;
 }
 int main(){
-    int a [6]={1,4,2,6,7,8};
+    int num_element,pos;
+    cout<<"Enter the number of elements : ";
+    cin>>num_element;
+    int data[num_element];
+    cout<<"Enter the elements : "<<endl;
+    for(int i=0;i<num_element;i++){
+        cout<<" >> ";
+        cin>>data[i];
+    }
     cout<<"Before deletion : ";
-    display_array(a,6);
+    display_array(data,num_element);
+    cout<<"Enter the position to be deleted : ";
+    cin>>pos;
     int *new_arr;
     cout<<"After deletion : ";
-    new_arr=delete_element(a,6,4);
-    display_array(new_arr,5);
+    new_arr=delete_element(data,num_element,pos);
+    display_array(new_arr,num_element-1);
     return 0;
 }
