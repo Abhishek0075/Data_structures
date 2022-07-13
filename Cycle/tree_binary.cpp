@@ -23,6 +23,11 @@ public:
     tree(){
         start=NULL;
     }
+    tree(int arr[],int no_element){
+        for(int i=0;i<no_element;i++){
+            insert_node(arr[i]);
+        }
+    }
     void insert_node(int num){
         int count;
         node* newNode=new node(num);
@@ -62,15 +67,22 @@ public:
         }
         cout<<"\nNumber "<<num<<" not found in the tree : "<<endl;
     }
+    void preorder(void){
+        
+    }
 };
 int main(){
-    tree t;
-    t.insert_node(10);
-    t.insert_node(9);
-    t.insert_node(31);
-    t.insert_node(30);
-    t.insert_node(8);
-    t.insert_node(50);
-    t.search(30);
+    int insert_info,no_nodes,search_key;
+    cout<<"Enter the number of nodes to be created : "<<endl;
+    cin>>no_nodes;
+    int a[no_nodes];
+    cout<<"Enter the number to be inserted in the list : "<<endl;
+    for(int i=0;i<no_nodes;i++){
+        cin>>a[i];
+    }
+    tree t(a,no_nodes);
+    cout<<"Enter the number to be searched in the list : "<<endl;
+    cin>>search_key;
+    t.search(search_key);
     return 0;
 }

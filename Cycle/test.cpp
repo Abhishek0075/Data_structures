@@ -88,13 +88,6 @@ int main(){
     cout<<"Enter the number to be searched in the list : "<<endl;
     cin>>search_key;
     t.search(search_key);
-    // tree t;
-    // t.insert_node(10);
-    // t.insert_node(9);
-    // t.insert_node(31);
-    // t.insert_node(30);
-    // t.insert_node(8);
-    // t.insert_node(50);
-    // t.search(1);
+    
     return 0;
 }

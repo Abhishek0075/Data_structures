@@ -48,14 +48,14 @@ public:
         ptr->link=new_node;
         new_node->link=NULL;
     }
-    void find(int item,node*& loc,node*& locp){
+    void find(int ITEM,node*& loc,node*& locp){
         node* save;
         node* ptr;
         if(start==NULL){
             loc=NULL,locp=NULL;
             return;
         }
-        if(start->info==item){
+        if(start->info==ITEM){
             loc=start;
             locp=NULL;
             return;
@@ -63,7 +63,7 @@ public:
         save=start;
         ptr=start->link;
         while(ptr!=NULL){
-            if(ptr->info==item){
+            if(ptr->info==ITEM){
                 loc=ptr;
                 locp=save;
                 return;
@@ -74,9 +74,23 @@ public:
         loc=NULL;
         return;
     }
+    void deletion(int ITEM){
+        node* loc=new node();
+        node* locp=new node();
+        find(ITEM,loc,locp);
+        if(loc==NULL){
+            cout<<ITEM<<" not in the list";
+            return;
+        }
+        if(locp==NULL){
+            start=start->link;
+        }else{
+            locp->link=loc->link;
+        }
+    }
 };
 int main(){
-    int insert_info,no_nodes,search_key;
+    int insert_info,no_nodes,delete_key;
     cout<<"Enter the number of nodes to be created : "<<endl;
     cin>>no_nodes;
     int a[no_nodes];
@@ -85,10 +99,9 @@ int main(){
         cin>>a[i];
     }
     linked_list list(a,no_nodes);
-    node* list1=new node();
-    node* list2=new node();
+    
     cout<<"Enter the number to be searched in the list : "<<endl;
-    cin>>search_key;
-    list.find(search_key,list1,list2);
+    cin>>delete_key;
+    list.deletion(delete_key);
     return 0;
 }
