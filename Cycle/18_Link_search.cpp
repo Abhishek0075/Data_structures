@@ -8,55 +8,62 @@ public:
         info=0;
         link=NULL;
     }
-    node(int value){
-        info=value;
+    node(int VALUE){
+        info=VALUE;
         link=NULL;
-    }
-    int get_info(void){
-        return info;
     }
 };
 class linked_list{
     node* start=NULL;
 public:
     linked_list(){}
-    linked_list(int arr[],int no_element){
-        for(int i=0;i<no_element;i++){
-            insert_node(arr[i]);
+    linked_list(int ARR[],int NO_ELEMENT){
+        for(int i=0;i<NO_ELEMENT;i++){
+            insert_node(ARR[i]);
         }
     }
-    void insert_node(int value){
-        node* new_node=new node(value);
+    void insert_node(int VALUE){
+        node* new_node=new node(VALUE);
         if(new_node==NULL){
             cout<<"Over Flow"<<endl;
             return;
         }
-        // cout<<"Constructed";
         if(start==NULL){
             start=new_node;
             return;
-            // cout<<"Entered start"<<endl;
         }
-        // cout<<"Hai";
         node* ptr=start;
         while (ptr->link!=NULL){
             ptr=ptr->link;
-            // cout<<"Entered link "<<endl;
         }
         ptr->link=new_node;
         new_node->link=NULL;
     }
-    void search_list(int item){
-        int count=1;
-        while(start!=NULL){
-            if(start->info==item){
-                cout<<"ITEM FOUND at : "<<count<<endl;
+    void find(int ITEM,node*& LOC,node*& LOCP){
+        node* save;
+        node* ptr;
+        if(start==NULL){
+            LOC=NULL,LOCP=NULL;
+            return;
+        }
+        if(start->info==ITEM){
+            LOC=start;
+            LOCP=NULL;
+            return;
+        }
+        save=start;
+        ptr=start->link;
+        while(ptr!=NULL){
+            if(ptr->info==ITEM){
+                LOC=ptr;
+                LOCP=save;
                 return;
             }
-            start=start->link;
-            count+=1;
-            // cout<<"HAi at search list" <<endl;
+            save=ptr;
+            ptr=ptr->link;
         }
+        LOC=NULL;
+        return;
     }
 };
 int main(){
@@ -69,8 +76,10 @@ int main(){
         cin>>a[i];
     }
     linked_list list(a,no_nodes);
+    node* node1=new node();
+    node* node2=new node();
     cout<<"Enter the number to be searched in the list : "<<endl;
     cin>>search_key;
-    list.search_list(search_key);
+    list.find(search_key,node1,node2);
     return 0;
 }
