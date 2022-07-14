@@ -4,7 +4,6 @@ void interpolation_search(int data[],int n,int item){
     int beg=0;
     int end=n-1;
     int pos;
-    int loc;
     while (beg<=end and item>=data[beg] and item<=data[end]){
         pos=beg+((item-data[beg])/(data[end]-data[beg]))*(end-beg);
         if(item==data[pos]){
