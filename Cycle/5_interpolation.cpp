@@ -4,26 +4,30 @@ void interpolation_search(int data[],int n,int item){
     int beg=0;
     int end=n-1;
     int pos;
-    int loc;
     while (beg<=end and item>=data[beg] and item<=data[end]){
         pos=beg+((item-data[beg])/(data[end]-data[beg]))*(end-beg);
         if(item==data[pos]){
-            loc=pos;
-            break;
+            cout<<"The location of "<<item<<" : " <<pos+1<<endl;
+            return;
         }else if(item>data[pos]){
             beg=pos+1;      
         }else{
             end=pos-1;
         }
-        loc=-1;
     }
-    cout<<"The location of "<<item<<" : " <<loc<<endl;
+    cout<<"!!! Element "<<item<<" not found !!!"<<endl;
 }
 int main(){
-    int num;
-    int arr[18]={10,13,26,28,50,56,98,127,159,356,480,567,689,699,780,850,956,995};
+    int element_no,search_num;
+    cout<<"Enter the number of elements in the array : ";
+    cin>>element_no;
+    int arr[element_no];
+    cout<<"Enter the elements of the array \n";
+    for(int i=0;i<element_no;i++){
+        cin>>arr[i];
+    }
     cout<<"Enter the number to be searched in the array : ";
-    cin>>num;
-    interpolation_search(arr,18,num);
+    cin>>search_num;
+    interpolation_search(arr,element_no,search_num);
     return 0;
 }

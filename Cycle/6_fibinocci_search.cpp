@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
-int fibonacci_search(int data[],int n,int item){
+void fibonacci_search(int data[],int n,int item){
     int fb1=0,fb2=1;
-    int fb,offset,i,loc;
+    int fb,offset,i;
     n=n-1;
     fb=fb1+fb2;
     offset=-1;
@@ -23,33 +23,29 @@ int fibonacci_search(int data[],int n,int item){
             fb2=fb2-fb1;
             fb1=fb-fb2;
         }else{
-            loc=i;
-            return loc;
+            cout<<"Element found at "<<i+1<<endl;
+            return;
         }
     }
     if(fb2=1 and data[offset+1]==item){
-        loc=offset+1;
-        return loc;
+        cout<<"Element found at "<<offset+1<<endl;
+        return;
     }
-    return -1;
+    cout<<"Element not found\n";
+    return;
+    
 }
 int main(){
-    int num,no_element,fibno;
-    cout<<"Enter the number of elements : ";
-    cin>>no_element;
-    int arr[no_element];
-    cout<<"Enter the elements of the array\n";
-    for(int i=0;i<no_element;i++){
+    int element_no,search_num;
+    cout<<"Enter the number of elements in the array : ";
+    cin>>element_no;
+    int arr[element_no];
+    cout<<"Enter the elements of the array \n";
+    for(int i=0;i<element_no;i++){
         cin>>arr[i];
     }
-    cout<<"Enter the number to be searched : ";
-    cin>>num;
-    fibno=fibonacci_search(arr,11,num);
-    if(fibno!=-1){
-        cout<<"The position of entered number is : ";
-        cout<<fibno+1<<endl;
-    }else{
-        cout<<"!! The entered number is not resent in the array !!"<<endl;
-    }
+    cout<<"Enter the number to be searched in the array : ";
+    cin>>search_num;
+    fibonacci_search(arr,element_no,search_num);
     return 0;
 }
