@@ -32,19 +32,24 @@ int fibonacci_search(int data[],int n,int item){
         return loc;
     }
     return -1;
-    
 }
 int main(){
-    int arr[11]={10,22,35,40,45,50,80,82,90,100,235};
-    int num;
+    int num,no_element,fibno;
+    cout<<"Enter the number of elements : ";
+    cin>>no_element;
+    int arr[no_element];
+    cout<<"Enter the elements of the array\n";
+    for(int i=0;i<no_element;i++){
+        cin>>arr[i];
+    }
     cout<<"Enter the number to be searched : ";
     cin>>num;
-    if(fibonacci_search(arr,11,num)!=-1){
+    fibno=fibonacci_search(arr,11,num);
+    if(fibno!=-1){
         cout<<"The position of entered number is : ";
-        cout<<fibonacci_search(arr,11,num)+1<<endl;
+        cout<<fibno+1<<endl;
     }else{
         cout<<"!! The entered number is not resent in the array !!"<<endl;
     }
-    
     return 0;
 }
