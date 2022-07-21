@@ -21,8 +21,18 @@ int pattern_matching(char text[],int text_no,char pattern[],int pat_no){
     return -1;
 }
 int main(){
-    char t[7]="School",p[3]="ol";
-    cout<<endl<<pattern_matching(t,6,p,2);
+    int let,positon,patlet;
+    cout<<"Enter the number of letters in the main string : ";
+    cin>>let;
+    char string[let];
+    cout<<"Input the string : ";
+    cin>>string;
+    cout<<"Enter the length of the pattern to be matched : ";
+    cin>>patlet;
+    char pattern[patlet];
+    cout<<"Input the pattern : ";
+    cin>>pattern;
+    cout<<endl<<pattern_matching(string,let,pattern,patlet);
 
     return 0;
 }

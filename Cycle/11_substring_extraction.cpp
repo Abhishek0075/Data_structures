@@ -13,8 +13,17 @@ void substring_extraction(char string[],int position,int sub_len){
     }
 }
 int main(){
-    char a[8]="English";
-    substring_extraction(a,1,5);
-    cout<<endl;//The positons are of :- 1 2 3 4 .... 
+    int letters,positon,length;
+    cout<<"Enter the number of letters in the main string : ";
+    cin>>letters;
+    char string[letters];
+    cout<<"Input the string : ";
+    cin>>string;
+    cout<<"Enter the length of the substring to be extracted : ";
+    cin>>length;
+    cout<<"Enter the position from which substring to be extracted : ";
+    cin>>positon;
+    substring_extraction(string,positon,length);
+    cout<<endl;
     return 0;
 }

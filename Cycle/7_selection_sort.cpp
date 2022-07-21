@@ -4,7 +4,7 @@ void selection_sort(int arr[],int no_element){
     int temp;
     for(int i=0;i<no_element-1;i++){
         for(int j=i+1;j<no_element;j++){
-            if (arr[i]<arr[j]){
+            if (arr[i]>arr[j]){
                 temp=arr[j];
                 arr[j]=arr[i];
                 arr[i]=temp;
@@ -17,13 +17,14 @@ void selection_sort(int arr[],int no_element){
     cout<<endl;
 }
 int main(){
-    int array[7]={2,1,9,11,8,17,10};
-    cout<<"Before selection sort : "<<endl;
-    for(int i=0;i<7;i++){
-        cout<<array[i]<<" ";
+    int element_no,search_num,ternary;
+    cout<<"Enter the number of elements in the array : ";
+    cin>>element_no;
+    int arr[element_no];
+    cout<<"Enter the elements of the array \n";
+    for(int i=0;i<element_no;i++){
+        cin>>arr[i];
     }
-    cout<<endl;
-    cout<<"After selection sort : "<<endl;
-    selection_sort(array,7);
+    selection_sort(arr,element_no);
     return 0; 
 }

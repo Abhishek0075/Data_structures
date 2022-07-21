@@ -34,5 +34,6 @@ int main(){
     cout<<endl;
     cout<<"After bubble sort : "<<endl;
     bubble_sort(array,no_element);
+    cout<<endl;
     return 0; 
 }

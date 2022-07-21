@@ -30,19 +30,22 @@ int ternary_search(int arr[],int no_element,int key){
     return -1;    
 }
 int main(){
-    int key=80,ternary;
-    int array[12]={11,22,30,33,40,44,55,60,66,80,87,99};
-    cout<<"Array : "<<endl;
-    for(int i=0;i<12;i++){
-        
-        cout<<array[i]<<" ";
+    int element_no,search_num,ternary;
+    cout<<"Enter the number of elements in the array : ";
+    cin>>element_no;
+    int arr[element_no];
+    cout<<"Enter the elements of the array \n";
+    for(int i=0;i<element_no;i++){
+        cin>>arr[i];
     }
-    cout<<endl;
-    ternary=ternary_search(array,12,key);
+    cout<<"Enter the number to be searched in the array : ";
+    cin>>search_num;
+
+    ternary=ternary_search(arr,element_no,search_num);
     if(ternary!=-1){
-        cout<<key<<" is at " <<ternary+1<< "th position"  <<endl;
+        cout<<search_num<<" is at " <<ternary+1<< "th position"  <<endl;
     }else{
-        cout<<key<<" is not a part of the array\n";
+        cout<<search_num<<" is not a part of the array\n";
     }
     
     return 0;

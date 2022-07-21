@@ -34,7 +34,7 @@ int main(){
 	cout<<"Enter the key to be searched "<<endl;
 	cin>>key;
 	cout<<"Result : "<<endl;
-	linear_search_iterative(a,key);
+	linear_search_iterative(a,no_element,key);
 	return 0;
 }
 

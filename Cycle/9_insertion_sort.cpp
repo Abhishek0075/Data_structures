@@ -26,6 +26,13 @@ int main(){
     for(int i=1;i<mod_elements;i++){
         cin>>data[i];
     }
+    cout<<"Before insertion sort : "<<endl;
+    for(int i=1;i<no_elements;i++){
+        cout<<data[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"After insertion sort : "<<endl;
     insertion_sort(data,mod_elements);
+    cout<<endl;    
     return 0;
 }
