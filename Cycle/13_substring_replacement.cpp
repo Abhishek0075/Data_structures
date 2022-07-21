@@ -74,14 +74,26 @@ void replacement(char text[],int text_no,char substring[],int sub_no,char replac
     
 }
 int main(){
-    char main[100],removed[100],replcr[100];
-    cout<<" Enter the main string : ";
-    cin>>main;
-    cout<<" Enter the substring to replace : ";
-    cin>>removed;
+    int let,positon,patlet,replet;
+    cout<<"Enter the number of letters in the main string : ";
+    cin>>let;
+    char string[let];
+    cout<<"Input the string : ";
+    cin>>string;
+    cout<<"Enter the length of the pattern to be matched : ";
+    cin>>patlet;
+    char pattern[patlet];
+    cout<<"Input the substring to be replaced : ";
+    cin>>pattern;
+    cout<<"Enter the length of the pattern to be matched : ";
+    cin>>patlet;
+    char pattern[patlet];
+    cout<<" Enter the length of substring with which we replace : ";
+    cin>>replet;
+    char replcr[replet];
     cout<<" Enter the substring with which we replace : ";
     cin>>replcr;
-    int main_len=strlen(main),rem_len=strlen(removed),rep_len=strlen(replcr);
-    replacement(main,main_len,removed,rem_len,replcr,rep_len);
+
+    replacement(string,let,pattern,patlet,replcr,replet);
     return 0;
 }
