@@ -1,5 +1,4 @@
 import shutil
-import os
 # n_list=list(range(1,1000))
 # str_n_list=[str(x) for x in n_list]
 # path=(r'C:\Users\abhir\OneDrive\Desktop\2022INDICON\ ')
