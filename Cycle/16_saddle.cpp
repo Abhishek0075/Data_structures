@@ -31,6 +31,7 @@ public:
             }
             cout<<endl;
         }
+        cout<<endl;
     }
     void saddle_point(void){
         int x_co=0,y_co=0;
@@ -58,9 +59,17 @@ public:
 };
 
 int main(){
-    matrix A(3,3);
+    int row,column;
+    cout<<"Enter the row and column of the matrix : "<<endl;
+    cout<<"Row : ";
+    cin>>row;
+    cout<<"Column : ";
+    cin>>column;
+    matrix A(row,column);
     cout<<endl;
     A.input_element();
+    cout<<endl;
+    cout<<"The entered matrix : \n";
     A.display();
     A.saddle_point();
     return 0;
