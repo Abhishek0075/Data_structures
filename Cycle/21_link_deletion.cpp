@@ -87,6 +87,14 @@ public:
         }else{
             locp->link=loc->link;
         }
+
+    }
+    void display(void){
+        node* ptr=start;
+        while(ptr!=NULL){
+            cout<<ptr->get_info()<<" ";
+            ptr=ptr->link;
+        }
     }
 };
 int main(){
@@ -102,6 +110,10 @@ int main(){
     
     cout<<"Enter the number to be searched in the list : "<<endl;
     cin>>delete_key;
+    cout<<"Array before deletion : ";
+    list.display();
     list.deletion(delete_key);
+    cout<<"\nArray after deletion  : ";
+    list.display();
     return 0;
 }
