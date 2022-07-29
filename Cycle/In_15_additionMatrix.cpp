@@ -33,27 +33,19 @@ public:
         p[0][1]=col;
         p[0][2]=num_values;
     }
-    void transpose(matrix mtx){
-        mtx.p[0][0]=p[0][1];
-        mtx.p[0][1]=p[0][0];
-        mtx.p[0][2]=p[0][2];
-        int k=1;
-        for(int i=0;i<col-1;i++){
-            for(int j=1;j<num_values+1;j++){
-                if(i==p[j][1]){
-                    mtx.p[k][0]=j;
-                    mtx.p[k][1]=p[j][0];
-                    mtx.p[k][2]=p[j][2];
-                    k+=1;
-                }
-            }
+    void add_sparse(matrix mtx){
+        if(p[0][0]!=mtx.p[0][0] or p[0][1]!=mtx.p[0][1]){
+            return;
         }
+        int temp1=p[0][2];
+        int temp2=mtx.p[0][2];
+        int i=0,j=0;
+        while(i<temp1 and j<temp2){
+            
+        }        
     }
 };
 int main(){
-    matrix m1(3,4,6);
-    m1.input_matrix();
-    cout<<"The matrix inputed : \n";
-    m1.display_matrix();
+
     return 0;
 }
