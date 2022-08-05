@@ -29,7 +29,6 @@ public:
         }
     }
     void insert_node(int num){
-        int count;
         node* newNode=new node(num);
         if(newNode==NULL){
             cout<<"Over Flow"<<endl;
