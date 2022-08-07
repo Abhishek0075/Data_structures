@@ -46,7 +46,7 @@ public:
         int count=1;
         while(start!=NULL){
             if(start->info==item){
-                cout<<"ITEM FOUND at : "<<count<<endl;
+                cout<<"ITEM FOUND at the position from the start : "<<count<<endl;
                 return;
             }
             start=start->link;
