@@ -49,27 +49,32 @@ public:
 
     node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
         node* ptr=start;
+        node* save;
+        if(start==NULL){
+            return NULL;
+        }
         while(ptr->link!=NULL){
-            if((ptr->link)->info==item)
+            if((ptr)->info>=item)
             {
-                return ptr->link;
+                return save;
             }else{
+                save=ptr;
                 ptr=ptr->link;
             }
         }
-        return ptr->link;
+        return ptr;
     }
 
-    void insert(int finder,int item){
+    void insert(int item){
         node* new_node=new node(item);
-        node* loc=find(finder);
+        node* loc=find(item);
         if(loc==NULL){
-            cout<<"Element not in the list"<<endl;
+            new_node->link=start;
+            start=new_node;
             return;
         }else{
             new_node->link=loc->link;
             loc->link=new_node;
-            cout<<"Element inserted"<<endl;
             return;
         }
     }
@@ -86,22 +91,20 @@ public:
 };
 
 int main(void){
-    int no_nodes,finder,num_insert;
-    cout<<"Enter the number of nodes to be created : ";
-    cin>>no_nodes;
-    int list_arr[no_nodes];
-    cout<<"Enter the node values in the list : "<<endl;
-    for(int i=0;i<no_nodes;i++){
-        cin>>list_arr[i];
-    }
+    int no_nodes=5,num_insert=99;
+    // cout<<"Enter the number of nodes to be created : ";
+    // cin>>no_nodes;
+    int list_arr[no_nodes]={13,44,56,88,90};
+    // cout<<"Enter the node values in the list : "<<endl;
+    // for(int i=0;i<no_nodes;i++){
+    //     cin>>list_arr[i];
+    // }
     linked_list list(list_arr,no_nodes);
     cout<<"The list before inserting : "<<endl;
     list.print_linkList();
-    cout<<"Enter the number after which we should insert the number : ";
-    cin>>finder;
-    cout<<"Enter the number to be inserted : ";
-    cin>>num_insert;
-    list.insert(finder,num_insert);
+    // cout<<"Enter the number to be inserted : ";
+    // cin>>num_insert;
+    list.insert(num_insert);
     cout<<"The list after inserting : "<<endl;
     list.print_linkList();
     return 0;
