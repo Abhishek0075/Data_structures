@@ -92,18 +92,18 @@ public:
 
 int main(void){
     int no_nodes=5,num_insert=99;
-    // cout<<"Enter the number of nodes to be created : ";
-    // cin>>no_nodes;
+    cout<<"Enter the number of nodes to be created : ";
+    cin>>no_nodes;
     int list_arr[no_nodes]={13,44,56,88,90};
-    // cout<<"Enter the node values in the list : "<<endl;
-    // for(int i=0;i<no_nodes;i++){
-    //     cin>>list_arr[i];
-    // }
+    cout<<"Enter the node values in the list : "<<endl;
+    for(int i=0;i<no_nodes;i++){
+        cin>>list_arr[i];
+    }
     linked_list list(list_arr,no_nodes);
     cout<<"The list before inserting : "<<endl;
     list.print_linkList();
-    // cout<<"Enter the number to be inserted : ";
-    // cin>>num_insert;
+    cout<<"Enter the number to be inserted : ";
+    cin>>num_insert;
     list.insert(num_insert);
     cout<<"The list after inserting : "<<endl;
     list.print_linkList();
