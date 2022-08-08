@@ -40,7 +40,6 @@ public:
             ptr=ptr->link;
         }
         ptr->link=new_node;
-        new_node->link=NULL;
     }
     void search_list(int item){
         int count=1;
