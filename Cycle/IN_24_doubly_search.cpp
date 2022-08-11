@@ -3,17 +3,17 @@ using namespace std;
 class node{
 public:
     int info;
-    node* left_link;
-    node* right_link;
+    node* back;
+    node* forw;
     node(){
         info=0;
-        left_link=NULL;
-        right_link=NULL;
+        back=NULL;
+        forw=NULL;
     }
     node(int num){
         info=num;
-        left_link=NULL;
-        right_link=NULL;
+        back=NULL;
+        forw=NULL;
     }
 };
 class linked_list{
@@ -27,25 +27,24 @@ public:
     }
     void insert_node(int value){
         node* new_node=new node(value);
-        // cout<<"Constructed";
-        if(header->right_link and header->left_link ==NULL){
+        if(header->forw==NULL and header->back==NULL){
             header=new_node;
             return;
         }
         node* ptr=header;
-        while (ptr->right_link!=NULL){
-            ptr=ptr->right_link;
+        while (ptr->forw!=NULL){
+            ptr=ptr->forw;
         }
-
-        ptr->right_link=new_node;
-        new_node->left_link=ptr;
-        new_node->right_link=NULL;
+        ptr->forw=new_node;
+        new_node->back=ptr;
     }
 
 };
 int main(){
-
-
-
+    linked_list list;
+    int arr[7]={9,54,22,11,10,76,5};
+    
+    
+    
     return 0;
 }
