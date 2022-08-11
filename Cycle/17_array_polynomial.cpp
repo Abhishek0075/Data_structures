@@ -14,8 +14,6 @@ void add_polynomial(int arr1[],int order1,int arr2[],int order2){
         }else{
             cout<<"x^"<<i<<"+";
         }
-        
-        
     }
 }
 int main(){
