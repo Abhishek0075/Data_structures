@@ -53,8 +53,11 @@ class matrix{
     }
 };
 int main(){
-    matrix a(5);
-    a.magic_odd();
-    a.show_matrix();
+    int type;
+    cout<<"Enter the type of magic square : ";
+    cin>>type;
+    matrix m_square(type);
+    m_square.magic_odd();
+    m_square.show_matrix();
     return 0;
 }

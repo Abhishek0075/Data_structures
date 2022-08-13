@@ -21,7 +21,7 @@ class linked_list{
 public:
     linked_list(){}
     linked_list(int arr[],int no_element){
-        for(int i=0;i<no_element;i++){
+        for(int i=0;i<=no_element;i++){
             create_node(arr[i]);
         }
     }
@@ -41,7 +41,6 @@ public:
         }
         ptr->link=new_node;
     }
-    
     void add_poly(linked_list list){
         linked_list* new_list=new linked_list();
         node* ptr1=start;
@@ -54,34 +53,59 @@ public:
             ptr2=ptr2->link;
         }
         if(ptr1!=NULL){
-            new_list->create_node(ptr1->info);
-            ptr1=ptr1->link;
-        }else{
-            new_list->create_node(ptr2->info);
-            ptr2=ptr2->link;
+            while(ptr1!=NULL){
+                new_list->create_node(ptr1->info);
+                ptr1=ptr1->link;
+            }
         }
-
+        if(ptr2!=NULL){
+            while(ptr2!=NULL){
+                new_list->create_node(ptr2->info);
+                ptr2=ptr2->link;
+            }
+        }
         new_list->print_poly();
     }
-    
     void print_poly(void){
         node* ptr=start;
+        int i=0;
         while(ptr!=NULL){
             cout<<"("<<ptr->info<<")";
             if(ptr->link==NULL){
-                cout<<"x^"<<ptr->info<<endl;
+                cout<<"x^"<<i<<endl;
             }else{
-                cout<<"x^"<<ptr->info<<"+";
+                cout<<"x^"<<i<<"+";
             }
+            i+=1;
             ptr=ptr->link;
         }
     }
 };
 int main(void){
-    int arr1[7]={23,11,6,7,18,19,100};
-    int arr2[5]={12,4,3,10,87};
-    linked_list list1(arr1,7);
-    linked_list list2(arr2,5);
+    int no_element1;
+    cout<<"==========First polynomial=========="<<endl;
+    
+    cout<<"Enter order of the first polynomial : ";
+    cin>>no_element1;
+    int poly1[no_element1];
+    cout<<"Order = "<<no_element1<<endl;
+    for (int i=0;i<=no_element1;i++){
+        cout<<"Enter the co-efficent of x^"<<i<<" : ";
+        cin>>poly1[i];
+    }
+    int no_element2;
+    cout<<"==========Second polynomial=========="<<endl;
+    
+    cout<<"Enter order of the second polynomial : ";
+    cin>>no_element2;
+    int poly2[no_element2];
+    cout<<"Order = "<<no_element2<<endl;
+    for (int i=0;i<=no_element2;i++){
+        cout<<"Enter the co-efficent of x^"<<i<<" : ";
+        cin>>poly2[i];
+    }
+    linked_list list1(poly1,no_element1);
+    linked_list list2(poly2,no_element2);
     list1.add_poly(list2);
     return 0;
 }
