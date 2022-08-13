@@ -5,22 +5,12 @@ class matrix{
     int row,column;
     public:
     matrix(){}
-    matrix(int d1,int d2){
+    matrix(int d1){
         row=d1;
-        column=d2;
+        column=d1;
         p=new int*[d1];
         for(int i=0;i<d1;i++){
-            p[i]=new int[d2];
-        }
-    }
-    void get_element(void){
-        int temp;
-        cout<<"Enter the elements : "<<endl;
-        for(int i=0;i<row;i++){
-            for(int j=0;j<column;j++){
-                cin>>temp;
-                p[i][j]=temp;
-            }
+            p[i]=new int[d1];
         }
     }
     void show_matrix(void){
@@ -32,39 +22,39 @@ class matrix{
         }
     }
     void magic_odd(){
-        matrix temp(3,3);
-        int r=1;
-        int c=2;
-        int i=1;
-        int count=9;
-        while(i<=count){
-            cout<<"Time "<<i<<endl;
-            cout<<"1 : "<<"r = "<<r<<" c = "<<c<<endl;
-            if(i!=1){
-                r=r-1;
-                c=c+1;
+        for(int i=0;i<column;i++){
+            for(int j=0;j<column;j++){
+                p[i][j]=999;
             }
-            if(c>=3 and r<0){
-                r=r+1;
-                c=c-2;
+        }
+        int count=column*row;
+        int x_coord=column/2,y_coord=column-1;
+        p[x_coord][y_coord]=1;
+        for(int i=2;i<=count;i++){
+            x_coord=x_coord-1;
+            y_coord=y_coord+1;
+            if(x_coord==-1 and y_coord==column){
+                x_coord=0;
+                y_coord=column-2;
+            }else{
+                if(x_coord==-1){
+                    x_coord=column-1;
+                }
+                if(y_coord==column){
+                    y_coord=0;
+                }
             }
-            if(c>=3){
-                c=c-3;
+            if((p[x_coord][y_coord])!=999){
+                x_coord=x_coord+1;
+                y_coord=y_coord-2;
             }
-            if(r<0){
-                r=3+r;
-            }
-            cout<<"2 : "<<"r = "<<r<<" c = "<<c<<endl;
-            temp.p[r][c]=i;
-            i=i+1;
-            
-        } 
-        temp.show_matrix();
+            p[x_coord][y_coord]=i;
+        }
     }
 };
 int main(){
-    matrix magic,a(3,3);
-    // a.get_element();
+    matrix a(5);
     a.magic_odd();
+    a.show_matrix();
     return 0;
 }
