@@ -20,7 +20,9 @@ public:
     }
 };
 class linked_list{
+    node* header=NULL;
     node* start=NULL;
+    
 public:
     linked_list(){}
     linked_list(int arr[],int no_element){
@@ -28,32 +30,33 @@ public:
             create_node(arr[i]);
         }
     }
-
     void create_node(int value){
         node* new_node=new node(value);
+        new_node->link=header;
         if(new_node==NULL){
             cout<<"Over Flow"<<endl;
             return;
         }
         if(start==NULL){
-            start=new_node;
+            header=new_node;
+            start=header;
+            new_node->link=new_node;
             return;
         }
         node* ptr=start;
-        while (ptr->link!=NULL){
+        while (ptr->link!=start){
             ptr=ptr->link;
         }
         ptr->link=new_node;
-        new_node->link=NULL;
     }
-
+    
     node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
         node* ptr=start;
         node* save;
         if(start==NULL){
             return NULL;
         }
-        while(ptr->link!=NULL){
+        while(ptr->link!=start){
             if((ptr)->info>=item)
             {
                 return save;
@@ -81,13 +84,18 @@ public:
     
     void print_linkList(){
         node* ptr=start;
-        while(ptr!=NULL)
-        {
+        while(ptr->link!=start){
             cout<<ptr->info<<" ";
             ptr=ptr->link;
         }
+        cout<<ptr->info<<"";
         cout<<endl;
     }
+
+
+//Problem is inserting at second last position
+
+
 };
 
 int main(void){
@@ -95,7 +103,7 @@ int main(void){
     cout<<"Enter the number of nodes to be created : ";
     cin>>no_nodes;
     int list_arr[no_nodes];
-    cout<<"Enter the node values in the list(Ascending order) : "<<endl;
+    cout<<"Enter the node values in the list : "<<endl;
     for(int i=0;i<no_nodes;i++){
         cin>>list_arr[i];
     }
@@ -107,5 +115,6 @@ int main(void){
     list.insert(num_insert);
     cout<<"The list after inserting : "<<endl;
     list.print_linkList();
+    
     return 0;
 }

@@ -24,7 +24,7 @@ class matrix{
     void magic_odd(){
         for(int i=0;i<column;i++){
             for(int j=0;j<column;j++){
-                p[i][j]=999;
+                p[i][j]=0;
             }
         }
         int count=column*row;
@@ -44,7 +44,7 @@ class matrix{
                     y_coord=0;
                 }
             }
-            if((p[x_coord][y_coord])!=999){
+            if((p[x_coord][y_coord])!=0){
                 x_coord=x_coord+1;
                 y_coord=y_coord-2;
             }
