@@ -20,7 +20,7 @@ public:
     }
 };
 class linked_list{
-    node* header=NULL;
+    // node* header=NULL;
     node* start=NULL;
     
 public:
@@ -32,14 +32,14 @@ public:
     }
     void create_node(int value){
         node* new_node=new node(value);
-        new_node->link=header;
+        new_node->link=start;
         if(new_node==NULL){
             cout<<"Over Flow"<<endl;
             return;
         }
         if(start==NULL){
-            header=new_node;
-            start=header;
+            // header=new_node;
+            start=new_node;
             new_node->link=new_node;
             return;
         }
@@ -51,12 +51,15 @@ public:
     }
     
     node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
-        node* ptr=start;
-        node* save;
+        node* save=start;
+        node* ptr=start->link;
         if(start==NULL){
             return NULL;
         }
-        while(ptr->link!=start){
+        if(start->info>=item){
+            return start;
+        }
+        while(ptr!=start){
             if((ptr)->info>=item)
             {
                 return save;
@@ -65,7 +68,7 @@ public:
                 ptr=ptr->link;
             }
         }
-        return ptr;
+        return save;
     }
 
     void insert(int item){
@@ -75,6 +78,9 @@ public:
             new_node->link=start;
             start=new_node;
             return;
+        }else if(loc==start){
+            new_node->link=start;
+            start=new_node;
         }else{
             new_node->link=loc->link;
             loc->link=new_node;
@@ -84,7 +90,7 @@ public:
     
     void print_linkList(){
         node* ptr=start;
-        while(ptr->link!=start){
+        while(ptr!=start){
             cout<<ptr->info<<" ";
             ptr=ptr->link;
         }

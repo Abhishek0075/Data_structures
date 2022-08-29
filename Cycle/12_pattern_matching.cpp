@@ -5,8 +5,8 @@ int pattern_matching(char text[],int text_no,char pattern[],int pat_no){
     int INDEX,l;
     while(k<=max){
         for(l=0;l<pat_no;l++){
-            cout<<"pattern["<<l<<"] = "<<pattern[l]<<endl;
-            cout<<"text["<<k+l<<"] = "<<text[k+l]<<endl<<endl;
+            // cout<<"pattern["<<l<<"] = "<<pattern[l]<<endl;
+            // cout<<"text["<<k+l<<"] = "<<text[k+l]<<endl<<endl;
             if(pattern[l]!=text[k+l]){
                 break;
             }else{
@@ -33,6 +33,5 @@ int main(){
     cout<<"Input the pattern : ";
     cin>>pattern;
     cout<<endl<<pattern_matching(string,let,pattern,patlet);
-
     return 0;
 }

@@ -84,7 +84,6 @@ public:
 int main(void){
     int no_element1;
     cout<<"==========First polynomial=========="<<endl;
-    
     cout<<"Enter order of the first polynomial : ";
     cin>>no_element1;
     int poly1[no_element1];

@@ -47,13 +47,16 @@ public:
         new_node->link=NULL;
     }
 
-    node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
-        node* ptr=start;
-        node* save;
+    node* find(int item){//Finds an item and gives location and     
+        node* ptr=start->link;//by calling insert we add element to that loc
+        node* save=start;
         if(start==NULL){
             return NULL;
         }
-        while(ptr->link!=NULL){
+        if(start->info>=item){
+            return start;
+        }
+        while(ptr!=NULL){
             if((ptr)->info>=item)
             {
                 return save;
@@ -62,9 +65,8 @@ public:
                 ptr=ptr->link;
             }
         }
-        return ptr;
+        return save;
     }
-
     void insert(int item){
         node* new_node=new node(item);
         node* loc=find(item);
@@ -72,6 +74,9 @@ public:
             new_node->link=start;
             start=new_node;
             return;
+        }else if(loc==start){
+            new_node->link=start;
+            start=new_node;
         }else{
             new_node->link=loc->link;
             loc->link=new_node;
