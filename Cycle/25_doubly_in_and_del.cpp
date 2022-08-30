@@ -40,7 +40,7 @@ public:
         new_node->back=ptr;
         end=new_node;
     }
-    node* insertFind(int item){//Finds an item and gives location and by calling insert we add element to that loc
+    node* Find(int item){//Finds an item and gives location and by calling insert we add element to that loc
         node* ptr=start;
         while(ptr->forw!=NULL){
             if((ptr)->info>=item)
@@ -54,7 +54,7 @@ public:
     }
     void insert(int item){
         node* new_node=new node(item);
-        node* loc=insertFind(item);
+        node* loc=Find(item);
         if(loc==start){
             start=new_node;
             new_node->forw=loc;
@@ -72,6 +72,32 @@ public:
             return;
         }
     }
+    node* delFind(int item){
+        node* ptr=start;
+        while(ptr!=NULL){
+            if(ptr->info==item){
+                return ptr;
+            }
+            ptr=ptr->forw;
+        }
+        return NULL;
+    }
+    void del(int item){
+        node* loc=delFind(item);
+        if(loc==NULL){
+            cout<<"Item not in the list\n";
+            return;
+        }else if(loc==start){
+            (loc->forw)->back=NULL;
+            start=loc->forw;
+        }else if(loc==end){
+            (loc->back)->forw=NULL;
+            end=loc->back;
+        }else{
+            (loc->forw)->back=loc->back;
+            (loc->back)->forw=loc->forw;
+        }
+    }
     void print_list(void){
         node* ptr=start;
         while(ptr!=NULL){
@@ -80,8 +106,8 @@ public:
         }
     }
 };
-int main(){
-    int element,inserter;
+int main(void){
+    int element,selector,actor;
     cout<<"Enter the number of nodes in linked list : ";
     cin>>element;
     int arr[element];
@@ -91,9 +117,18 @@ int main(){
         cin>>arr[i];
     }
     linked_list list(arr,element);
-    cout<<"Enter the number to be inserted : ";
-    cin>>inserter;
-    list.insert(inserter);
-    list.print_list();
+    cout<<"Enter 1 for inserting \nEnter 2 for deleting\nEnter 3 for exiting\n >>> ";
+    cin>>selector;
+    if(selector==1){
+        cout<<"Enter the number to be inserted : ";
+        cin>>actor;
+        list.insert(actor);
+        list.print_list();
+    }else if(selector==2){
+        cout<<"Enter the number to be deleted : ";
+        cin>>actor;
+        list.del(actor);
+        list.print_list();
+    }    
     return 0;
 }
