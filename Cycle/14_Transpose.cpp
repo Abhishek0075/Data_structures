@@ -55,7 +55,7 @@ int main(){
     cin>>row;
     cout<<"Enter the number of columns in the matrix : ";
     cin>>col;
-    cout<<"Enter the number of elements in the matrix : ";
+    cout<<"Enter the number of non-zero elements in the matrix : ";
     cin>>num;
     
     matrix m1(row,col,num);

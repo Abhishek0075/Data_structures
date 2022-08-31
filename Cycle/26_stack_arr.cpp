@@ -6,16 +6,16 @@ class stack{
     int top;
 public: 
     stack(int n){
-        int* arr=new int[n];
+        arr=new int[n];
         max=n;
-        top=0;
+        top=1;
     }
     void push(int num){
         if(top==max){
             cout<<"OVERFLOW";
             return;
         }
-        arr[top+1]=num;
+        arr[top]=num;
         top=top+1;
         return;
     }
@@ -25,7 +25,7 @@ public:
         return item;
     }
     void printStack(void){
-        for(int i=1;i<=top;i++){
+        for(int i=1;i<top;i++){
             cout<<arr[i]<<" ";
         }
         cout<<endl;
@@ -47,9 +47,9 @@ int main(void){
     cout<<"Stack after pushing :-\n";
     stk.printStack();
     cout<<"Stack after popping :-\n";
-    // popper=stk.pop();
-    // cout<<"Element popped : "<<popper<<endl;
+    popper=stk.pop();
     stk.printStack();
+    cout<<"The element popped : "<<popper;
     
     return 0;
 }

@@ -29,6 +29,8 @@ public:
         }
     }
     void insert_node(int num){
+        node* save;
+        int count;
         node* newNode=new node(num);
         if(newNode==NULL){
             cout<<"Over Flow"<<endl;
@@ -37,41 +39,46 @@ public:
         if(start==NULL){
             start=newNode;
             return;
-        }
-        node* ptr=start;
-        while(ptr->leftSide!=NULL and ptr->rightSide!=NULL){
-            if(newNode->info<ptr->info){
-                ptr=ptr->leftSide;
-            }else{
-                ptr=ptr->rightSide;
-            }
-        }
-        if(newNode->info<ptr->info){
-            ptr->leftSide=newNode;
         }else{
-            ptr->rightSide=newNode;
-        }
-    }
-    void search(int num){
-        node* ptr=start;
-        while(ptr!=NULL){
-            cout<<ptr->info<<" ";
-            if(ptr->info < num){
-                ptr=ptr->rightSide;
-            }else if(ptr->info > num){
-                ptr=ptr->leftSide;
+
+            node* ptr=start;
+            while(ptr!=NULL){
+                save=ptr;
+                if(newNode->info<=ptr->info){
+                    ptr=ptr->leftSide;
+                    count=1;
+                }else{
+                    ptr=ptr->rightSide;
+                    count=0;
+                }
+            }
+            if(count==1){
+                save->leftSide=newNode;
             }else{
-                return;
+                save->rightSide=newNode;
             }
         }
-        cout<<"\nNumber "<<num<<" not found in the tree : "<<endl;
     }
+    // void search(int num){
+    //     node* ptr=start;
+    //     while(ptr!=NULL){
+    //         cout<<ptr->info<<" ";
+    //         if(ptr->info < num){
+    //             ptr=ptr->rightSide;
+    //         }else if(ptr->info > num){
+    //             ptr=ptr->leftSide;
+    //         }else{
+    //             return;
+    //         }
+    //     }
+    //     cout<<"\nNumber "<<num<<" not found in the tree : "<<endl;
+    // }
     void preorder(void){
         
     }
 };
 int main(){
-    int insert_info,no_nodes,search_key;
+    int insert_info,no_nodes,inserter;
     cout<<"Enter the number of nodes to be created : "<<endl;
     cin>>no_nodes;
     int a[no_nodes];
@@ -80,8 +87,8 @@ int main(){
         cin>>a[i];
     }
     tree t(a,no_nodes);
-    cout<<"Enter the number to be searched in the list : "<<endl;
-    cin>>search_key;
-    t.search(search_key);
+    cout<<"Enter the number to be inserted in the list : "<<endl;
+    cin>>inserter;
+    t.insert_node(inserter);
     return 0;
 }
