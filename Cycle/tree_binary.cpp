@@ -18,11 +18,8 @@ public:
     }
 };
 class tree{
-    node* start;
+    node* start=NULL;
 public:
-    tree(){
-        start=NULL;
-    }
     tree(int arr[],int no_element){
         for(int i=0;i<no_element;i++){
             insert_node(arr[i]);
@@ -40,7 +37,6 @@ public:
             start=newNode;
             return;
         }else{
-
             node* ptr=start;
             while(ptr!=NULL){
                 save=ptr;
@@ -59,22 +55,42 @@ public:
             }
         }
     }
-    // void search(int num){
-    //     node* ptr=start;
-    //     while(ptr!=NULL){
-    //         cout<<ptr->info<<" ";
-    //         if(ptr->info < num){
-    //             ptr=ptr->rightSide;
-    //         }else if(ptr->info > num){
-    //             ptr=ptr->leftSide;
-    //         }else{
-    //             return;
-    //         }
-    //     }
-    //     cout<<"\nNumber "<<num<<" not found in the tree : "<<endl;
-    // }
-    void preorder(void){
+
+    void preorder(node* root){
+        if (root == NULL){
+            return;
+        }
+        cout<<root->info<<" ";
+        preorder(root->leftSide);
+        preorder(root->rightSide);
+    }
+
+    void printTraversals(void){
+        cout<<"Preorder traversal :- \n";
+        preorder(start);
+        cout<<"\nInorder traversal :- \n";
+        inorder(start);
+        cout<<"\nPostorder traversal :- \n";
+        postorder(start);
         
+    }
+
+    void postorder(node* root){
+        if (root == NULL){
+            return;
+        }
+        postorder(root->leftSide);
+        postorder(root->rightSide);
+        cout<<root->info<<" ";
+    }
+
+    void inorder(node* node){
+        if (node == NULL){
+            return;
+        }
+        inorder(node->leftSide);
+        cout<<node->info<<" ";
+        inorder(node->rightSide);
     }
 };
 int main(){
@@ -87,8 +103,9 @@ int main(){
         cin>>a[i];
     }
     tree t(a,no_nodes);
-    cout<<"Enter the number to be inserted in the list : "<<endl;
-    cin>>inserter;
-    t.insert_node(inserter);
+    // cout<<"Enter the number to be inserted in the list : "<<endl;
+    // cin>>inserter;
+    // t.insert_node(inserter);
+    t.printTraversals();
     return 0;
 }
