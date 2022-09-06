@@ -98,12 +98,16 @@ int main(){
     matrix m1(2,3,4),m2(2,3,5);
     cout<<"m1 : \n";
     m1.input_matrix();
-    m1.display_matrix();
     cout<<endl;
     cout<<"m2 : \n";
     m2.input_matrix();
-    m2.display_matrix();
     cout<<"Sum : \n";
+    cout<<"m1 : \n";
+    m1.display_matrix();
+    cout<<endl;
+    cout<<"m2 : \n";
+    m2.display_matrix();
+    cout<<endl;
     m1.add_sparse(m2);
     return 0;
 }
