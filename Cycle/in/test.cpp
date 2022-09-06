@@ -1,99 +1,58 @@
 #include<iostream>
 using namespace std;
-void add(int B1[][3], int B2[][3]){
-    if(B1[0][0] != B2[0][0] || B1[0][1] != B2[0][1]){
-        return;
-    }
-    int T1 = B1[0][2];
-    int T2 = B2[0][2];
 
-    int i, j, k;
-    i = j = k = 1;
-
-    int B[14][3];
-
-    B[0][0] = B1[0][0];
-    B[0][1] = B1[0][1];
-
-    while(i<=T1 and j<=T2){
-        if(B1[i][0] < B2[j][0]){
-            //cout<<"hi"<<B1[i][0]<<" "<<B1[i][1]<<" "<<B1[i][2]<<"\n";
-            B[k][0] = B1[i][0];
-            B[k][1] = B1[i][1];
-            B[k][2] = B1[i][2];
-            k=k+1;
-            i=i+1;
-        }
-        else if(B2[j][0] < B1[i][0]){
-            // cout<<"hlo"<<B1[i][0]<<" "<<B1[i][1]<<" "<<B1[i][2]<<"\n";
-            // cout<<"hi"<<B2[i][0]<<" "<<B2[i][1]<<" "<<B2[i][2]<<"\n";
-            B[k][0] = B2[j][0];
-            B[k][1] = B2[j][1];
-            B[k][2] = B2[j][2];
-            k=k+1;
-            j=j+1;
-        }
-        else if(B2[j][1] < B1[i][1]){
-            //cout<<"hi"<<B2[i][0]<<" "<<B2[i][1]<<" "<<B2[i][2]<<"\n";
-            B[k][0] = B2[j][0];
-            B[k][1] = B2[j][1];
-            B[k][2] = B2[j][2];
-            k = k+1;
-            j = j+1;
-        }
-        //problem
-        else if(B1[i][1] < B2[j][1]){
-            //cout<<"hi"<<B1[i][0]<<" "<<B1[i][1]<<" "<<B1[i][2]<<"\n";
-            B[k][0] = B1[i][0];
-            B[k][1] = B1[i][1];
-            B[k][2] = B1[i][2];
-            k=k+1;
-            i=i+1;
-        }
-        else{
-            B[k][0] = B1[i][0];
-            B[k][1] = B1[i][1];
-            B[k][2] = B1[i][2] + B2[j][2];
-            k=k+1;
-            i=i+1;
-            j=j+1;
+void merge(int *arr1,int element1,int lb1,int *arr2,int element2,int lb2,int *final,int lbFINAL){
+    int upper1=lb1+element1,upper2=lb2+element2;
+    while(lb1<upper1 and lb2<upper2){
+        cout<<"arr1["<<lb1<<"] = "<<arr1[lb1]<<endl;
+        cout<<"arr2["<<lb2<<"] = "<<arr2[lb2]<<endl<<endl;
+        if (arr1[lb1]<arr2[lb2]){
+            final[lbFINAL]=arr1[lb1];
+            lb1+=1;
+            lbFINAL+=1;
+        }else{
+            final[lbFINAL]=arr2[lb2];
+            lb2+=1;
+            lbFINAL+=1;
         }
     }
-
-    while(i<=T1){
-        B[k][0] = B1[i][0];
-        B[k][1] = B1[i][1];
-        B[k][2] = B1[i][2];
-        k=k+1;
-        i=i+1;
-    }
-
-    while(j<=T2){
-        B[k][0] = B2[j][0];
-        B[k][1] = B2[j][1];
-        B[k][2] = B2[j][2];
-        k = k+1;
-        j = j+1;
-    }
-
-    B[0][2] = k-1;
-
-    for(int i=0; i<k; i++){
-        for(int j=0; j<3; j++){
-            cout<<B[i][j]<<" ";
+    if(lb1>=upper1){
+        for(int i=0;i<upper2-lb2;i++){
+            final[lbFINAL+i]=arr2[lb2+i];
         }
-        cout<<"\n";
+    }else{
+        for(int i=0;i<upper1-lb1;i++){
+            final[lbFINAL+i]=arr1[lb1+i];
+        }
     }
-    
+}
+void merge_pass(int arr1[],int arr1_element,int g_limit,int arr2[]){
+    int no_group=arr1_element/(2*g_limit);
+    int elements_grouped=2*g_limit*no_group;
+    int reminder=arr1_element-elements_grouped;
+    int lower_bound;
+    for(int j=0;j<no_group;j++){
+        lower_bound=2*g_limit*(j-1);
+        merge(arr1,g_limit,lower_bound,arr1,g_limit,g_limit+lower_bound,arr2,lower_bound);
+    }
+    if(reminder<g_limit){
+        for(int i=1;i<reminder;i++){
+            arr2[elements_grouped+i]=arr1[i];
+        }
+    }else{
+        merge(arr1,g_limit,elements_grouped+1,arr1,reminder-g_limit,g_limit+elements_grouped+1,arr2,elements_grouped+1);
+    }
 }
 
 
-
 int main(){
-    int B1[][3] = {{5,6,6},{0,4,9},{1,1,8},{2,0,4},{2,3,2},{3,5,5},{4,2,2}};
-    int B2[][3] = {{5,6,8},{0,2,4},{0,4,8},{1,1,6},{1,2,4},{2,3,6},{3,4,2},{3,5,6},{4,3,7}};
-   
-    add(B1,B2);
-
+    int arr1[6]={23,1,4,54,10,32};
+    int arr2[5]={32,11,67,100,6};
+    int arr[11];
+    merge(arr1,6,0,arr2,5,0,arr,0);
+    cout<<"Array after merge : ";
+    for(int i=0;i<11;i++){
+        cout<<arr[i]<<" ";
+    }
     return 0;
-} 
+}
