@@ -69,18 +69,26 @@ public:
                 }
             }
         }
+        return NULL;
     }
 
     void deletion(int item){
         node* save;
+        node* temp;
         node* address_deletion=find(item,save);
+        if(address_deletion==NULL){
+            cout<<"Entered value is not a node in the tree";
+            return;
+        }
         if(address_deletion->leftSide==NULL and address_deletion->rightSide==NULL){
             if(save->leftSide==address_deletion){
                 save->leftSide=NULL;
                 delete address_deletion;
+                return;
             }else{
                 save->rightSide=NULL;
                 delete address_deletion;
+                return;
             }
         }else{
             if(address_deletion->leftSide==NULL){
@@ -91,20 +99,40 @@ public:
                     save->rightSide=address_deletion->rightSide;
                     delete address_deletion;
                 }
-            }else{
+            }else if(address_deletion->rightSide==NULL){
                 if(save->leftSide==address_deletion){
                     save->leftSide=address_deletion->leftSide;
                     delete address_deletion;
+                    return;
                 }else{
                     save->rightSide=address_deletion->leftSide;
                     delete address_deletion;
+                    return;
                 }
-                
+            }else{
+                //For 2 children ones
+                node* ptr=address_deletion;
+                node* beforePtr;
+                while(ptr!=NULL and ptr->leftSide!=NULL){
+                    beforePtr=ptr;
+                    ptr=ptr->leftSide;
+                }
+                if(ptr->leftSide==NULL and ptr->rightSide!=NULL){
+                    address_deletion=ptr->rightSide;
+                    temp=ptr->rightSide;
+                    ptr->rightSide=NULL;
+                    delete temp;
+                    return;
+                }else{
+                    address_deletion->info=(beforePtr->rightSide)->info;
+                    temp=beforePtr->rightSide;
+                    beforePtr->rightSide=NULL;
+                    delete temp;
+                    return;
+                }
             }
         }
     }
-
-
     void preorder(node* root){
         if (root == NULL){
             return;
@@ -136,11 +164,10 @@ public:
         inorder(start);
         cout<<"\nPostorder traversal :- \n";
         postorder(start);
-        
     }
-    
 };
 int main(){
+    int d;
     int insert_info,no_nodes,inserter;
     cout<<"Enter the number of nodes to be created : "<<endl;
     cin>>no_nodes;
@@ -153,6 +180,10 @@ int main(){
     // cout<<"Enter the number to be inserted in the list : "<<endl;
     // cin>>inserter;
     // t.insert_node(inserter);
+    t.printTraversals();
+    cout<<"Enter the number to be deleted from the tree : ";
+    cin>>d;
+    t.deletion(d);
     t.printTraversals();
     return 0;
 }
