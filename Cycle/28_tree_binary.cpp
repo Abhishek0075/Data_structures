@@ -55,6 +55,55 @@ public:
             }
         }
     }
+    node* find(int item,node*& save){
+        node* ptr=start;
+        while(ptr!=NULL){
+            if(ptr->info==item){
+                return ptr;
+            }else{
+                save=ptr;
+                if(ptr->info<item){
+                    ptr=ptr->rightSide;
+                }else{
+                    ptr=ptr->leftSide;
+                }
+            }
+        }
+    }
+
+    void deletion(int item){
+        node* save;
+        node* address_deletion=find(item,save);
+        if(address_deletion->leftSide==NULL and address_deletion->rightSide==NULL){
+            if(save->leftSide==address_deletion){
+                save->leftSide=NULL;
+                delete address_deletion;
+            }else{
+                save->rightSide=NULL;
+                delete address_deletion;
+            }
+        }else{
+            if(address_deletion->leftSide==NULL){
+                if(save->leftSide==address_deletion){
+                    save->leftSide=address_deletion->rightSide;
+                    delete address_deletion;
+                }else{
+                    save->rightSide=address_deletion->rightSide;
+                    delete address_deletion;
+                }
+            }else{
+                if(save->leftSide==address_deletion){
+                    save->leftSide=address_deletion->leftSide;
+                    delete address_deletion;
+                }else{
+                    save->rightSide=address_deletion->leftSide;
+                    delete address_deletion;
+                }
+                
+            }
+        }
+    }
+
 
     void preorder(node* root){
         if (root == NULL){
@@ -64,7 +113,22 @@ public:
         preorder(root->leftSide);
         preorder(root->rightSide);
     }
-
+    void inorder(node* node){
+        if (node == NULL){
+            return;
+        }
+        inorder(node->leftSide);
+        cout<<node->info<<" ";
+        inorder(node->rightSide);
+    }
+    void postorder(node* root){
+        if (root == NULL){
+            return;
+        }
+        postorder(root->leftSide);
+        postorder(root->rightSide);
+        cout<<root->info<<" ";
+    }
     void printTraversals(void){
         cout<<"Preorder traversal :- \n";
         preorder(start);
@@ -74,24 +138,7 @@ public:
         postorder(start);
         
     }
-
-    void postorder(node* root){
-        if (root == NULL){
-            return;
-        }
-        postorder(root->leftSide);
-        postorder(root->rightSide);
-        cout<<root->info<<" ";
-    }
-
-    void inorder(node* node){
-        if (node == NULL){
-            return;
-        }
-        inorder(node->leftSide);
-        cout<<node->info<<" ";
-        inorder(node->rightSide);
-    }
+    
 };
 int main(){
     int insert_info,no_nodes,inserter;

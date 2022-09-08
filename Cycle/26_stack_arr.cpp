@@ -33,7 +33,7 @@ public:
 };
 
 int main(void){
-    int no_element,ele,item,popper;
+    int no_element,ele,item,popper,selection;
     cout<<"Enter the length of the stack : ";
     cin>>no_element;
     stack stk(no_element);
