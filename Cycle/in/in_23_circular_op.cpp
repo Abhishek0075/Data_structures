@@ -47,8 +47,8 @@ public:
         ptr->link=new_node;
     }
     
-    node* find(int item,node*& save){//Finds an item and gives location and by calling insert we add element to that loc
-        save=start;
+    node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
+        node* save=start;
         node* ptr=start->link;
         if(start==NULL){
             return NULL;
@@ -66,14 +66,10 @@ public:
 
     void insert(int item){
         node* new_node=new node(item);
-        node* save;
-        node* loc=find(item,save);
+        node* loc=find(item);
         if(loc==NULL){
-            new_node->link=start;
             start=new_node;
-        }else if(loc==start){
             new_node->link=start;
-            start=new_node;
         }else{
             new_node->link=loc->link;
             loc->link=new_node;
@@ -97,7 +93,7 @@ public:
 };
 
 int main(void){
-    int no_nodes=5,num_insert=14;
+    int no_nodes=5,num_insert=66;
     // cout<<"Enter the number of nodes to be created : ";
     // cin>>no_nodes;
     int list_arr[no_nodes]={12,23,34,45,56};
