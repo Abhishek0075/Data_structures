@@ -20,9 +20,7 @@ public:
     }
 };
 class linked_list{
-    // node* header=NULL;
     node* start=NULL;
-    
 public:
     linked_list(){}
     linked_list(int arr[],int no_element){
@@ -38,7 +36,6 @@ public:
             return;
         }
         if(start==NULL){
-            // header=new_node;
             start=new_node;
             new_node->link=new_node;
             return;
@@ -50,18 +47,14 @@ public:
         ptr->link=new_node;
     }
     
-    node* find(int item){//Finds an item and gives location and by calling insert we add element to that loc
-        node* save=start;
+    node* find(int item,node*& save){//Finds an item and gives location and by calling insert we add element to that loc
+        save=start;
         node* ptr=start->link;
         if(start==NULL){
             return NULL;
         }
-        if(start->info>=item){
-            return start;
-        }
         while(ptr!=start){
-            if((ptr)->info>=item)
-            {
+            if(ptr->info>=item){
                 return save;
             }else{
                 save=ptr;
@@ -69,28 +62,27 @@ public:
             }
         }
         return save;
-    }
+    }   
 
     void insert(int item){
         node* new_node=new node(item);
-        node* loc=find(item);
+        node* save;
+        node* loc=find(item,save);
         if(loc==NULL){
             new_node->link=start;
             start=new_node;
-            return;
         }else if(loc==start){
             new_node->link=start;
             start=new_node;
         }else{
             new_node->link=loc->link;
             loc->link=new_node;
-            return;
         }
     }
     
     void print_linkList(){
         node* ptr=start;
-        while(ptr!=start){
+        while(ptr->link!=start){
             cout<<ptr->info<<" ";
             ptr=ptr->link;
         }
@@ -105,19 +97,19 @@ public:
 };
 
 int main(void){
-    int no_nodes,num_insert;
-    cout<<"Enter the number of nodes to be created : ";
-    cin>>no_nodes;
-    int list_arr[no_nodes];
-    cout<<"Enter the node values in the list : "<<endl;
-    for(int i=0;i<no_nodes;i++){
-        cin>>list_arr[i];
-    }
+    int no_nodes=5,num_insert=14;
+    // cout<<"Enter the number of nodes to be created : ";
+    // cin>>no_nodes;
+    int list_arr[no_nodes]={12,23,34,45,56};
+    // cout<<"Enter the node values in the list : "<<endl;
+    // for(int i=0;i<no_nodes;i++){
+    //     cin>>list_arr[i];
+    // } 
     linked_list list(list_arr,no_nodes);
     cout<<"The list before inserting : "<<endl;
     list.print_linkList();
-    cout<<"Enter the number to be inserted : ";
-    cin>>num_insert;
+    // cout<<"Enter the number to be inserted : ";
+    // cin>>num_insert;
     list.insert(num_insert);
     cout<<"The list after inserting : "<<endl;
     list.print_linkList();
