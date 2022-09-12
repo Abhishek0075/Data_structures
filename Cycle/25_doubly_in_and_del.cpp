@@ -98,16 +98,26 @@ public:
             (loc->back)->forw=loc->forw;
         }
     }
-    void print_list(void){
+    void print_forw(void){
         node* ptr=start;
         while(ptr!=NULL){
             cout<<ptr->info<<" ";
             ptr=ptr->forw;
         }
     }
+    void print_back(void){
+        node* ptr=start;
+        while(ptr->forw!=NULL){
+            ptr=ptr->forw;
+        }
+        while(ptr!=NULL){
+            cout<<ptr->info<<" ";
+            ptr=ptr->back;
+        } 
+    }
 };
 int main(void){
-    int element,selector,actor;
+    int element,selector=1,actor;
     cout<<"Enter the number of nodes in linked list : ";
     cin>>element;
     int arr[element];
@@ -117,18 +127,28 @@ int main(void){
         cin>>arr[i];
     }
     linked_list list(arr,element);
-    cout<<"Enter 1 for inserting \nEnter 2 for deleting\nEnter 3 for exiting\n >>> ";
-    cin>>selector;
-    if(selector==1){
-        cout<<"Enter the number to be inserted : ";
-        cin>>actor;
-        list.insert(actor);
-        list.print_list();
-    }else if(selector==2){
-        cout<<"Enter the number to be deleted : ";
-        cin>>actor;
-        list.del(actor);
-        list.print_list();
+    while (selector>=1 and selector<=2){
+        cout<<"\n\nEnter 1 for inserting \nEnter 2 for deleting\nEnter 3 for exiting\n >>> ";
+        cin>>selector;
+        if(selector==1){
+            cout<<"Enter the number to be inserted : ";
+            cin>>actor;
+            list.insert(actor);
+            cout<<"Printing forward : ";
+            list.print_forw();
+            cout<<endl;
+            cout<<"Printing backwards : ";
+            list.print_back();
+        }else if(selector==2){
+            cout<<"Enter the number to be deleted : ";
+            cin>>actor;
+            list.del(actor);
+            cout<<"Printing forward : ";
+            list.print_forw();
+            cout<<endl;
+            cout<<"Printing backwards : ";
+            list.print_back();
+        }
     }    
     return 0;
 }
