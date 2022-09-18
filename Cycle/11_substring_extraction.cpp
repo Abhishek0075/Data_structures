@@ -7,7 +7,7 @@ void substring_extraction(char string[],int position,int sub_len){
         sub_string[count]=string[position+count-1];
         count=count+1;
     }
-    
+    cout<<"The extracted string : ";
     for(int i=0;i<count;i++){
         cout<<sub_string[i];
     }

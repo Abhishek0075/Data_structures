@@ -27,7 +27,7 @@ int main(){
         cin>>data[i];
     }
     cout<<"Before insertion sort : "<<endl;
-    for(int i=1;i<no_elements;i++){
+    for(int i=1;i<no_elements+1;i++){
         cout<<data[i]<<" ";
     }
     cout<<endl;

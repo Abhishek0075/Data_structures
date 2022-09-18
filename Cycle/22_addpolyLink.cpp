@@ -64,17 +64,18 @@ public:
                 ptr2=ptr2->link;
             }
         }
+        cout<<"The sum of polnomials : ";
         new_list->print_poly();
     }
     void print_poly(void){
         node* ptr=start;
         int i=0;
         while(ptr!=NULL){
-            cout<<"("<<ptr->info<<")";
+            cout<<" ("<<ptr->info<<")";
             if(ptr->link==NULL){
                 cout<<"x^"<<i<<endl;
             }else{
-                cout<<"x^"<<i<<"+";
+                cout<<"x^"<<i<<" +";
             }
             i+=1;
             ptr=ptr->link;

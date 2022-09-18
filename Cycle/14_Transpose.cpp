@@ -6,7 +6,7 @@ class matrix{
 public:
     matrix(){}
     void input_matrix(void){
-        cout<<"Enter the elements of the "<<row<<"*"<<col<<" matrix with "<<num_values<<" values : "<<endl;
+        cout<<"Enter the elements of the "<<row<<"x"<<col<<" matrix with "<<num_values<<" values : "<<endl;
         for(int i=1;i<num_values+1;i++){
             cout<<"Enter the row column and value in order : \n";
             for(int j=0;j<3;j++){

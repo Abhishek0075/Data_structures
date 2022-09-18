@@ -6,7 +6,7 @@ void fibonacci_search(int data[],int n,int item){
     n=n-1;
     fb=fb1+fb2;
     offset=-1;
-    while(fb<n){
+    while(fb<=n){
         fb1=fb2;
         fb2=fb;
         fb=fb2+fb1;
@@ -28,7 +28,7 @@ void fibonacci_search(int data[],int n,int item){
         }
     }
     if(fb2=1 and data[offset+1]==item){
-        cout<<"Element found at "<<offset+1<<endl;
+        cout<<"Element found at "<<(offset+2)<<endl;
         return;
     }
     cout<<"Element not found\n";

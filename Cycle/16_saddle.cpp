@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-//Saddle Point = row min and column max
 class matrix{
     int col,row;
     int **p;

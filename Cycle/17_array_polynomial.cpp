@@ -7,7 +7,8 @@ void add_polynomial(int arr1[],int order1,int arr2[],int order2){
         }
         arr1[i]=arr1[i]+arr2[i];
     }
-    for(int i=order1-1;i>=0;i--){
+    cout<<"The final sum : ";
+    for(int i=order1;i>=0;i--){
         cout<<"("<<arr1[i]<<")";
         if(i==0){
             cout<<"x^"<<i<<endl;

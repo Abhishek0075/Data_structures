@@ -167,8 +167,7 @@ public:
     }
 };
 int main(){
-    int d;
-    int insert_info,no_nodes,inserter;
+    int insert_info,no_nodes,inserter,d,selector=1;
     cout<<"Enter the number of nodes to be created : "<<endl;
     cin>>no_nodes;
     int a[no_nodes];
@@ -177,13 +176,24 @@ int main(){
         cin>>a[i];
     }
     tree t(a,no_nodes);
-    // cout<<"Enter the number to be inserted in the list : "<<endl;
-    // cin>>inserter;
-    // t.insert_node(inserter);
-    t.printTraversals();
-    cout<<"Enter the number to be deleted from the tree : ";
-    cin>>d;
-    t.deletion(d);
-    t.printTraversals();
+    while(selector>0 and selector<3){
+        cout<<"\n-----OPTIONS-----";
+        cout<<"\n1 to insert \n2 to delete\nOther keys to EXIT\n";
+        cout<<"Enter your input : ";
+        cin>>selector;
+        if(selector==1){
+            cout<<"Enter the number to be inserted in the list : "<<endl;
+            cin>>inserter;
+            t.insert_node(inserter);
+            cout<<"After insertion : "<<endl;
+            t.printTraversals();
+        }else if(selector==2){
+            cout<<"\nEnter the number to be deleted from the tree : ";
+            cin>>d;
+            t.deletion(d);
+            cout<<"After deletion : "<<endl;
+            t.printTraversals();
+        }
+    }
     return 0;
 }

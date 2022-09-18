@@ -79,7 +79,7 @@ public:
         node* locp=new node();
         find(ITEM,loc,locp);
         if(loc==NULL){
-            cout<<ITEM<<" not in the list";
+            cout<<endl<<ITEM<<" not in the list";
             return;
         }
         if(locp==NULL){
@@ -87,7 +87,8 @@ public:
         }else{
             locp->link=loc->link;
         }
-
+        cout<<"\nArray after deletion  : ";
+        display();
     }
     void display(void){
         node* ptr=start;
@@ -108,12 +109,12 @@ int main(){
     }
     linked_list list(a,no_nodes);
     
-    cout<<"Enter the number to be searched in the list : "<<endl;
+    cout<<"Enter the number to be deleted from the list : "<<endl;
     cin>>delete_key;
     cout<<"Array before deletion : ";
     list.display();
     list.deletion(delete_key);
-    cout<<"\nArray after deletion  : ";
-    list.display();
+    // cout<<"\nArray after deletion  : ";
+    // list.display();
     return 0;
 }

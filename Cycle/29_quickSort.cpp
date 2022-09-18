@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int partition(int *data,int begin,int end){
+int quick(int *data,int begin,int end){
     int pivot = data[begin];
     int lowerBound = begin;
     int upperBound = end;
@@ -28,7 +28,7 @@ int partition(int *data,int begin,int end){
 void quickSort(int *data,int begin,int end){
     int loc;
     if(begin<end){
-        loc = partition(data,begin,end);
+        loc = quick(data,begin,end);
         quickSort(data,begin,loc-1);
         quickSort(data,loc+1,end);
     }
@@ -51,6 +51,12 @@ int main(){
     for(int i=0;i<length;i++){
         cin>>arr[i];
     }
+    cout<<"Array before quick sorting : ";
+    for(int i=0;i<length;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"Array after quick sorting : ";
     quickSort(arr,0,length-1);
     printArray(arr,length);
 }

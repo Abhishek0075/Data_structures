@@ -32,6 +32,6 @@ int main(){
     char pattern[patlet];
     cout<<"Input the pattern : ";
     cin>>pattern;
-    cout<<endl<<pattern_matching(string,let,pattern,patlet);
+    cout<<"The substring starts at the position : "<<pattern_matching(string,let,pattern,patlet);
     return 0;
 }

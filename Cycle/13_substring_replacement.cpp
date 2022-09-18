@@ -6,8 +6,8 @@ int pattern_matching(char text[],int text_no,char pattern[],int pat_no){
     int INDEX,l;
     while(k<=max){
         for(l=0;l<pat_no;l++){
-            cout<<"pattern["<<l<<"] = "<<pattern[l]<<endl;
-            cout<<"text["<<k+l<<"] = "<<text[k+l]<<endl<<endl;
+            // cout<<"pattern["<<l<<"] = "<<pattern[l]<<endl;
+            // cout<<"text["<<k+l<<"] = "<<text[k+l]<<endl<<endl;
             if(pattern[l]!=text[k+l]){
                 break;
             }else{
@@ -31,7 +31,7 @@ void sub_delete(char text[],int text_no,char pattern[],int pat_no){
         cout<<"There is no string like this in the main text "<<endl;
     }else{
         while(times<=helper){
-            cout<<"text["<<remaining<<"] : "<<text[remaining]<<"--------->"<<"text["<<index-1<<"] : "<<text[index-1]<<endl;
+            // cout<<"text["<<remaining<<"] : "<<text[remaining]<<"--------->"<<"text["<<index-1<<"] : "<<text[index-1]<<endl;
             text[index-1]=text[remaining];
             index+=1;
             remaining+=1;
@@ -80,20 +80,19 @@ int main(){
     char string[let];
     cout<<"Input the string : ";
     cin>>string;
-    cout<<"Enter the length of the pattern to be matched : ";
+    cout<<endl;
+    cout<<"Enter the length of the pattern to be replaced : ";
     cin>>patlet;
     char pattern[patlet];
     cout<<"Input the substring to be replaced : ";
     cin>>pattern;
-    cout<<"Enter the length of the pattern to be matched : ";
-    cin>>patlet;
-    char pattern[patlet];
-    cout<<" Enter the length of substring with which we replace : ";
+    cout<<endl;
+    cout<<" Enter the length of substring using which we replace : ";
     cin>>replet;
     char replcr[replet];
-    cout<<" Enter the substring with which we replace : ";
+    cout<<" Enter the substring using which we replace : ";
     cin>>replcr;
-
+    cout<<endl;
     replacement(string,let,pattern,patlet,replcr,replet);
     return 0;
 }

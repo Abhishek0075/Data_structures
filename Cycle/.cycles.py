@@ -27,6 +27,6 @@
 #26  Push and pop in stack using array.
 #27  Push and pop in stack using linkedlist.
 #28  Create a Binary search tree and perform traversal(search), insert and
-#         delete on the tree.
+#           delete on the tree.
 #29  Quick Sort.
 #30  Program to dequeue and enqueue in queue data structure.

@@ -56,10 +56,10 @@ public:
 };
 int main(){
     int insert_info,no_nodes,search_key;
-    cout<<"Enter the number of nodes to be created : "<<endl;
+    cout<<"Enter the length of the stack : ";
     cin>>no_nodes;
     int a[no_nodes];
-    cout<<"Enter the number to be inserted in the list : "<<endl;
+    cout<<"Enter the number to be pushed into the stack : "<<endl;
     for(int i=0;i<no_nodes;i++){
         cin>>a[i];
     }

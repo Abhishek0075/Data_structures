@@ -43,8 +43,7 @@ public:
     node* Find(int item){//Finds an item and gives location and by calling insert we add element to that loc
         node* ptr=start;
         while(ptr->forw!=NULL){
-            if((ptr)->info>=item)
-            {
+            if((ptr->forw)->info>=item){
                 return ptr;
             }else{
                 ptr=ptr->forw;
@@ -54,21 +53,24 @@ public:
     }
     void insert(int item){
         node* new_node=new node(item);
-        node* loc=Find(item);
-        if(loc==start){
-            start=new_node;
-            new_node->forw=loc;
+        if(start->info>item){
+            new_node->forw=start;
             new_node->back=NULL;
-            loc->back=new_node;
-        }else if(loc==NULL){
+            start->back=new_node;
+            start=new_node;
+            return;
+        }
+        node* loc=Find(item);
+        if(loc==NULL){
                 new_node->forw=NULL;
                 new_node->back=end;
                 end=new_node;
                 return;
         }else{
-            new_node->forw=loc;
-            new_node->back=loc->back;
-            (loc->back)->forw=new_node;
+            new_node->forw=loc->forw;
+            new_node->back=loc;
+            (loc->forw)->back=new_node;
+            loc->forw=new_node;
             return;
         }
     }
@@ -128,7 +130,7 @@ int main(void){
     }
     linked_list list(arr,element);
     while (selector>=1 and selector<=2){
-        cout<<"\n\nEnter 1 for inserting \nEnter 2 for deleting\nEnter 3 for exiting\n >>> ";
+        cout<<"\nEnter 1 for inserting \nEnter 2 for deleting\nEnter 3 for exiting\n >>> ";
         cin>>selector;
         if(selector==1){
             cout<<"Enter the number to be inserted : ";

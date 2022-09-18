@@ -75,15 +75,16 @@ int main(void){
             cout<<"Enter the number to be enqueued : ";
             cin>>num;
             Q.enqueue(num);
+            cout<<"After enqueuing : ";
             Q.print();
         }else if(selector==2){
             del=Q.dequeue();
             cout<< "  " <<del<<" dequed "<<endl;
+            cout<<"After dequeuing : ";
             Q.print();
         }else{
             break;
         }
     }
-    
     return 0;
 }

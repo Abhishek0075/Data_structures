@@ -25,10 +25,9 @@ public:
         return item;
     }
     void printStack(void){
-        for(int i=1;i<top;i++){
-            cout<<arr[i]<<" ";
+        for(int i=top-1;i>0;i--){
+            cout<<arr[i]<<endl;
         }
-        cout<<endl;
     }
 };
 

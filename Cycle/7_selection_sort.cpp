@@ -11,6 +11,7 @@ void selection_sort(int arr[],int no_element){
             }
         }
     }
+    cout<<"After sorting : ";
     for(int i=0;i<no_element;i++){
         cout<<arr[i]<<" ";
     }
@@ -25,6 +26,11 @@ int main(){
     for(int i=0;i<element_no;i++){
         cin>>arr[i];
     }
+    cout<<"Before sorting : ";
+    for(int i=0;i<element_no;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
     selection_sort(arr,element_no);
     return 0; 
 }
