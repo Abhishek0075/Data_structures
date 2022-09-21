@@ -52,17 +52,13 @@ public:
             ptr1=ptr1->link;
             ptr2=ptr2->link;
         }
-        if(ptr1!=NULL){
-            while(ptr1!=NULL){
-                new_list->create_node(ptr1->info);
-                ptr1=ptr1->link;
-            }
+        while(ptr1!=NULL){
+            new_list->create_node(ptr1->info);
+            ptr1=ptr1->link;
         }
-        if(ptr2!=NULL){
-            while(ptr2!=NULL){
-                new_list->create_node(ptr2->info);
-                ptr2=ptr2->link;
-            }
+        while(ptr2!=NULL){
+            new_list->create_node(ptr2->info);
+            ptr2=ptr2->link;
         }
         cout<<"The sum of polnomials : ";
         new_list->print_poly();

@@ -12,9 +12,6 @@ public:
         info=value;
         link=NULL;
     }
-    int get_info(void){
-        return info;
-    }
 };
 class linked_list{
     node* start=NULL;

@@ -7,22 +7,22 @@ int ternary_search(int arr[],int no_element,int key){
     while (beg<=end){
         mid1=((end-beg)/3)+beg;
         mid2=2*((end-beg)/3)+beg;
-     
+    
         if(key==arr[mid1]){
             // cout<<"key==arr[mid1]"<<endl;
             return mid1;
         }
-         else if(key==arr[mid2]){
+        else if(key==arr[mid2]){
             // cout<<"key==arr[mid2]"<<endl;
             return mid2;
         }
-         else if(key<arr[mid1]){
+        else if(key<arr[mid1]){
             end=mid1-1;
         }
-         else if(key>arr[mid2]){
+        else if(key>arr[mid2]){
             beg=mid2+1;
         }
-         else if (key<arr[mid2] and key>arr[mid1]){
+        else if (key<arr[mid2] and key>arr[mid1]){
             beg=mid1+1;
             end=mid2-1;
         } 

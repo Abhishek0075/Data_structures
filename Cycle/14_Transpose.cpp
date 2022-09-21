@@ -35,7 +35,7 @@ public:
     }
     void transpose(void){
         matrix mtx(col,row,num_values);
-        int k=1;//Used to move by row in second matrix i.e transpose matrix
+        int k=1;
         for(int i=0;i<col;i++){
             for(int j=1;j<num_values+1;j++){
                 if(i==p[j][1]){

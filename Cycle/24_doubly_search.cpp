@@ -19,10 +19,8 @@ public:
 class linked_list{
     node* start;
     node* end;
-    node* header;
 public:
     linked_list(int arr[],int num){
-        header=NULL;
         start=NULL;
         end=NULL;
         for(int i=0;i<num;i++){
@@ -31,12 +29,11 @@ public:
     }
     void insert_node(int value){
         node* new_node=new node(value);
-        if(header==NULL){
-            header=new_node;
-            start=header;
+        if(start==NULL){
+            start=new_node;
             return;
         }
-        node* ptr=header;
+        node* ptr=start;
         while (ptr->forw!=NULL){
             ptr=ptr->forw;
         }
