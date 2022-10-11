@@ -3,17 +3,15 @@ using namespace std;
 int ternary_search(int arr[],int no_element,int key){
     int beg=0,end=no_element-1;
     int mid1,mid2;
-    
+
     while (beg<=end){
         mid1=((end-beg)/3)+beg;
         mid2=2*((end-beg)/3)+beg;
     
         if(key==arr[mid1]){
-            // cout<<"key==arr[mid1]"<<endl;
             return mid1;
         }
         else if(key==arr[mid2]){
-            // cout<<"key==arr[mid2]"<<endl;
             return mid2;
         }
         else if(key<arr[mid1]){
